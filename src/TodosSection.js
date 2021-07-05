@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
 import FilterInput from "./FilterInput";
+import { INITIAL_TODOS } from "./todosData";
 
-const INITIAL_TODOS = [
-    { title: "My first todo", done: false },
-    { title: "Do Pakalim 💥", done: true },
-    { title: "Do 10 final exercises", done: false },
-    { title: "Cake break 🎂", done: false },
-];
 export default function TodosSection() {
     const [filter, setFilter] = useState("");
     const [todos, setTodos] = useState(INITIAL_TODOS);

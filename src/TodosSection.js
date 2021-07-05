@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
 import FilterInput from "./FilterInput";
+import { TodosContextProvider, useTodosContext } from "./todosContext";
 
-const INITIAL_TODOS = [
-    { title: "My first todo", done: false },
-    { title: "Do Pakalim 💥", done: true },
-    { title: "Do 10 final exercises", done: false },
-    { title: "Cake break 🎂", done: false },
-];
 export default function TodosSection() {
     const [filter, setFilter] = useState("");
-    const [todos, setTodos] = useState(INITIAL_TODOS);
+    const { todos } = useTodosContext();
 
     return (
         <span className="flex-hcenter m-2">
@@ -20,11 +15,13 @@ export default function TodosSection() {
                 </span>
 
                 <span className="m-0.5">
-                    <TodoList
-                        todos={todos.filter((todo) =>
-                            todo.title.includes(filter)
-                        )}
-                    />
+                    {todos && (
+                        <TodoList
+                            todos={todos.filter((todo) =>
+                                todo.title.includes(filter)
+                            )}
+                        />
+                    )}
                 </span>
             </span>
         </span>

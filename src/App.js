@@ -9,12 +9,10 @@ function App() {
     const [todos, setTodos] = useState(INITIAL_TODOS);
 
     const markDone = (id) => {
+        const newTodos = [...todos];
         const index = todos.findIndex((todo) => todo.id === id);
-        setTodos([
-            ...todos.slice(0, index),
-            { ...todos[index], done: !todos[index].done },
-            ...todos.slice(index + 1),
-        ]);
+        newTodos[index].done = !newTodos[index].done;
+        setTodos(newTodos);
     };
 
     return (
